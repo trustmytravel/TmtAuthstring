@@ -1,5 +1,5 @@
 # TMT Authstring
-A helper class for creating valid authstrings for use with the [Trust My Travel Payment Modal](https://demo.trustmytravel.com/modal/).
+A helper class for creating valid authstrings and validating transaction hashes for use with the [Trust My Travel Payment Modal](https://demo.trustmytravel.com/modal/).
 
 ## Create Authstring
 To create a valid authstring for use with the Payment Modal you will need to pass the following values to the `getAuthstring` method in the `TmtAuthstring\Create` class:
