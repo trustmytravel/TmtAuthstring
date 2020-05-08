@@ -24,6 +24,30 @@ $final_auth_string = $tmtAuthstring->getAuthstring($channel_id, $channel_currenc
 
 The `$final_auth_string` would then be included in a hidden input, or included in a data object, depending on the Payment Modal implementation you are using.
 
+## Create Authstring with Additional Fields
+Should you wish to ensure that other values are not tampered with, you can include them in the hashed and salted authstring by passing them in an array of additional values. Please note that these fields must be valid payment modal fields according to the implementation in use.
+
+### Example
+```
+require 'TmtAuthstring/Create.php';
+
+$tmtAuthstring     = new \TmtAuthstring\Create();
+$channel_id        = 23;
+$channel_currency  = 'USD';
+$booking_total     = 1000;
+$channel_secret    = '$2y$10$ABCDEFEGHIJKLMNOPQRSTUVWXYZ';
+$additional_fields = [
+    'reference'     => 'SOMEBOOKINGREFERENCE',
+    'allocations    => [
+        'channels'   => 24,
+        'currencies' => 'GBP,
+        'total'      => 500,
+        'operator'   => 'flat'
+    ],
+];
+$final_auth_string = $tmtAuthstring->getAuthstring($channel_id, $channel_currency, $booking_total, $channel_secret, $additional_fields);
+```
+
 ## Validate Transaction Hash
 To validate the hash field in a transaction response, you will need to instantiate the `TmtAuthstring\Validate` method with the following values:
 * `id` field contained in the transaction response
