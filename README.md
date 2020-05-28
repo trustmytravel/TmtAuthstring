@@ -41,8 +41,8 @@ $additional_fields = [
     'allocations    => [
         'channels'   => 24,
         'currencies' => 'GBP,
-        'total'      => 500,
-        'operator'   => 'flat'
+        'operator'   => 'flat',
+        'total'      => 500
     ],
 ];
 $final_auth_string = $tmtAuthstring->getAuthstring($channel_id, $channel_currency, $booking_total, $channel_secret, $additional_fields);
